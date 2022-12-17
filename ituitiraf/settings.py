@@ -12,10 +12,11 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 
 from pathlib import Path
 
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
+SECURE_CROSS_ORIGIN_OPENER_POLICY = None
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
@@ -25,7 +26,7 @@ SECRET_KEY = 'django-insecure-uwxm%f#ypiuq+vhzbw(tw-#o6x078bpdb+n8=-li+y6nb+!sb(
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['firatkizilboga.pythonanywhere.com']
 
 
 # Application definition
@@ -40,11 +41,13 @@ INSTALLED_APPS = [
     'rest_framework',
     'api',
     'confession',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -52,7 +55,13 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+
+
 ROOT_URLCONF = 'ituitiraf.urls'
+
+CORS_ALLOWED_ORIGINS = [
+    'firatkizilboga.pythonanywhere.com',
+]
 
 TEMPLATES = [
     {
@@ -76,10 +85,18 @@ WSGI_APPLICATION = 'ituitiraf.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'firatkizilboga$confessiondatabase',
+        'USER': 'firatkizilboga',
+        'PASSWORD': 'cL6uY_B3bx9mMK!',
+        'HOST': 'firatkizilboga.mysql.pythonanywhere-services.com',
+        'PORT': '3306',
+        'OPTIONS': {
+            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"
+        }
     }
 }
 
@@ -118,7 +135,10 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
-STATIC_URL = 'static/'
+STATICFILES_DIRS = [
+    BASE_DIR / "static",
+    "static/",
+]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
