@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-uwxm%f#ypiuq+vhzbw(tw-#o6x078bpdb+n8=-li+y6nb+!sb(
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['firatkizilboga.pythonanywhere.com']
+ALLOWED_HOSTS = ['firatkizilboga.pythonanywhere.com',"localhost","127.0.0.1"]
 
 
 # Application definition
@@ -60,7 +60,10 @@ MIDDLEWARE = [
 ROOT_URLCONF = 'ituitiraf.urls'
 
 CORS_ALLOWED_ORIGINS = [
-    'firatkizilboga.pythonanywhere.com',
+    'http://localhost:8000',
+    'http://127.0.0.1:8000',
+    'https://firatkizilboga.pythonanywhere.com',
+    'http://firatkizilboga.pythonanywhere.com',
 ]
 
 TEMPLATES = [
@@ -85,9 +88,9 @@ WSGI_APPLICATION = 'ituitiraf.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
-
+#change the name of the related database to default depending on the enviroenment
 DATABASES = {
-    'default': {
+    'default': { #' production': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'firatkizilboga$confessiondatabase',
         'USER': 'firatkizilboga',
@@ -97,6 +100,10 @@ DATABASES = {
         'OPTIONS': {
             'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"
         }
+    },
+    'test': { #'test': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
 
@@ -134,6 +141,8 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
+
+STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
     BASE_DIR / "static",
