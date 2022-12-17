@@ -5,7 +5,7 @@ from confession.models import Confession, Comment
 from confession.serializers import ConfessionRetrieveSerializer, CommentCreateSerializer,CommentSerializer, ConfessionCreateSerializer
 #import Response from rest_framework
 from rest_framework.response import Response
-
+import os
 # Create your views here.
 
 class ConfessionLikeView(GenericAPIView):
@@ -17,6 +17,7 @@ class ConfessionLikeView(GenericAPIView):
         confession.save()
         serializer = ConfessionRetrieveSerializer(confession)
         return Response(serializer.data)
+
 class ConfessionCreateView(CreateAPIView):
     queryset = Confession.objects.all()
     serializer_class = ConfessionCreateSerializer
@@ -27,7 +28,6 @@ class ConfessionCreateView(CreateAPIView):
             serializer.save()
         else:
             serializer.save(body=title)
-
 
 class ConfessionRetrieveView(RetrieveAPIView):
     queryset = Confession.objects.filter(approved=True)
@@ -70,4 +70,3 @@ class CommentListView(ListAPIView):
         queryset = Comment.objects.filter(confession_id = pk).order_by('-date')[start:end]
         serializer_class = CommentSerializer(queryset, many=True)
         return Response(serializer_class.data)
-

@@ -3,8 +3,11 @@ import requests
 
 #get the confessions
 url = 'http://firatkizilboga.pythonanywhere.com/api'
-response = requests.get(url, params={'start': 0, 'end':2})
-print(len(response.json()))
+response = requests.get(url, params={'start': 5, 'end':10})
+print("****get confessions****")
+print((response.json()))
+print("************")
+
 
 #get the spesific confession with id 1
 url = 'http://firatkizilboga.pythonanywhere.com/api/confession/1/'
@@ -27,3 +30,5 @@ url = 'http://firatkizilboga.pythonanywhere.com/api/confession/1/comments'
 response = requests.get(url)
 
 print(response.json())
+
+'http://firatkizilboga.pythonanywhere.com/'
