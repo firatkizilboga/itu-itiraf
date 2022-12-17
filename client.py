@@ -1,6 +1,6 @@
 import requests
 
-url = 'http://127.0.0.1:8000/api/confession/1'
+url = 'https://firatkizilboga.pythonanywhere.com/api/confession/1/like'
 #get confessions
-response = requests.get(url, data={})
+response = requests.put(url, )
 print(response.json())
