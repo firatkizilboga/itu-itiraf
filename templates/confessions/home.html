@@ -8,6 +8,18 @@
     <title>itü itiraf</title>
 </head>
 <body>
+    <script>
+        async function getData() {
+            const response = await fetch('https://firatkizilboga.pythonanywhere.com/api');
+            const data = await response.json();
+            console.log(data);
+          }
+    </script>
     <h1>İTÜ'nün yeni itiraf sayfası</h1>
+    <button id = "data_getter"></button>
+    <script>
+        const button = document.getElementById('data_getter');
+        button.addEventListener('click', getData);
+      </script>
 </body>
 </html>
