@@ -1,22 +1,32 @@
+{%load static%} <!-- Ekstra dosyaları getirmek için böyle yapıyorsun-->
+<!--  statik dosyaları en üst dizindeki static klasörüne atıcaksın -->
+
 <!-- direkt api/ adresine headerde start=0 ve end=10 parametreleri olacak şekilde request at kullanıcı sayfayı aşağı indirince 
     start=10 end=20 gibisinden query atmaya devam edersin -->
+
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static '/style.css'%}"> <!-- statik dosyaları böyle çağırıyorsun-->
     <title>itü itiraf</title>
 </head>
+
 <body>
     <script>
         async function getData() {
-            const response = await fetch('https://firatkizilboga.pythonanywhere.com/api');
-            const data = await response.json();
+            const response = await fetch('https://firatkizilboga.pythonanywhere.com/api'); // buraya api adresini yaz
+            const data = await response.json(); // datayla ne yapılacaksa yap
             console.log(data);
           }
     </script>
     <h1>İTÜ'nün yeni itiraf sayfası</h1>
     <button id = "data_getter"></button>
+
+    <img src="{% static '/İTÜ_logo.png'%}" alt=""> <!-- statik dosyaları böyle çağırıyorsun-->
+
     <script>
         const button = document.getElementById('data_getter');
         button.addEventListener('click', getData);
