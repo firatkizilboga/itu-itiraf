@@ -2,7 +2,7 @@ from django.shortcuts import render
 #import the api views required to CRUD from rest_framework
 from rest_framework.generics import CreateAPIView, RetrieveAPIView, ListAPIView, GenericAPIView
 from confession.models import Confession, Comment
-from confession.serializers import ConfessionRetrieveSerializer, CommentCreateSerializer,CommentSerializer
+from confession.serializers import ConfessionRetrieveSerializer, CommentCreateSerializer,CommentSerializer, ConfessionCreateSerializer
 #import Response from rest_framework
 from rest_framework.response import Response
 
@@ -19,7 +19,7 @@ class ConfessionLikeView(GenericAPIView):
         return Response(serializer.data)
 class ConfessionCreateView(CreateAPIView):
     queryset = Confession.objects.all()
-    serializer_class = CommentCreateSerializer
+    serializer_class = ConfessionCreateSerializer
     def perform_create(self, serializer):
         title = serializer.validated_data['title']
         body = serializer.validated_data['body']
