@@ -6,7 +6,13 @@ import sys
 
 def main():
     """Run administrative tasks."""
-    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'ituitiraf.settings')
+    
+
+    if sys.argv[1] == 'debug':
+        os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'ituitiraf.debug_settings')
+        sys.argv[1] = 'runserver'
+    else:
+        os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'ituitiraf.settings')
     try:
         from django.core.management import execute_from_command_line
     except ImportError as exc:
