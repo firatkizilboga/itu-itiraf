@@ -10,26 +10,70 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static '/style.css'%}"> <!-- statik dosyaları böyle çağırıyorsun-->
+    <script src="https://kit.fontawesome.com/ee4f3021a8.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Montserrat:wght@400;700&family=Open+Sans:wght@300&family=Poppins:wght@200;400&family=Work+Sans:wght@300&display=swap"
+        rel="stylesheet">
+    {% load static %}
+    <link href="{% static '/style.css' %}" rel="stylesheet"> <!-- statik dosyaları böyle çağırıyorsun-->
     <title>itü itiraf</title>
 </head>
 
 <body>
-    <script>
-        async function getData() {
-            const response = await fetch('https://firatkizilboga.pythonanywhere.com/api'); // buraya api adresini yaz
-            const data = await response.json(); // datayla ne yapılacaksa yap
-            console.log(data);
-          }
-    </script>
-    <h1>İTÜ'nün yeni itiraf sayfası</h1>
-    <button id = "data_getter"></button>
+    
+    <!-- Navigation Bar -->
+    <nav>
+        <div class="nav-logo"><img class="nav-logo-img" src="{% static '/İTÜ_logo.png'%}" alt=""></div>
+        <div class="nav-menu">
+            <ul class="nav-menu-links">
+                <li><a class="nav-item" href="">Anasayfa</a></li>
+                <li><a class="nav-item" href="">İtiraf Et</a></li>
+                <li><a class="nav-item" href="">Hakkımızda</a></li>
+                <li><a class="nav-item" href="">Üye Ol</a></li>
+                <li><a class="nav-item" href="">Giriş Yap</a></li>
+            </ul>
+        </div>
+    </nav>
 
-    <img src="{% static '/İTÜ_logo.png'%}" alt=""> <!-- statik dosyaları böyle çağırıyorsun-->
+    <div class="home-display">
+        <ul>
+            <li class="conf-home"></li>
+            <li class="conf-home"></li>
+            <li class="conf-home"></li>
+        </ul>
+    </div>
 
-    <script>
-        const button = document.getElementById('data_getter');
-        button.addEventListener('click', getData);
-      </script>
+    <!--Home Screen Display Confession-->
+
+   
+
+    <!--Display Confession-->
+    <div class="confession-box">
+        <div class="home-confession">
+            <div class="confession-header">
+                <h3 id="confession-title">Confession Title</h3>
+                <h4 id="confession-date">mm.dd.yy</h4>
+            </div>
+            <h4 id="confession-info">Here comes a little info about confession...</h4>
+            <div class="confession-bottom">
+                <button class="btn-conf" id="likes">LN
+                    <i class="fa-regular fa-heart"></i>
+                </button>
+                <button class="btn-conf" id="confessions">CN
+                    <i class="fa-regular fa-comment"></i>
+                    
+                </button>
+                <button class="btn-conf" id="conf-contact">
+                    <i class="fa-brands fa-instagram"></i>
+                </button>
+
+            </div>
+        </div>
+    </div>
+
+    <script src="{% static '/script.js' %}"></script>
+
 </body>
 </html>

@@ -1,3 +1,192 @@
-h1{
-    background-color: blue;
+
+
+:root{
+    --white: #fbfbfd;
+    --off-white: #f5f8fe;
+    --blue-1: #062a54;
+    --blue-2: #4191eb;
+    --grey: #25292f;
 }
+
+html{
+    font-size: 10px;
+}
+
+
+/* Buttons */
+
+.btn-primary{
+    font-family: 'Poppins', sans-serif;
+    width: 11.2rem;
+    height: 4.8rem;
+    border: 0.1rem solid var(--blue-1);
+    border-radius: 1rem;
+    color: #fbfbfd;
+    background-color: var(--blue-1);
+    transition: 0.4s;
+}
+
+.btn-primary:hover{
+    background-color: var(--blue-2);
+    border: 1px solid var(--blue-2);
+
+}
+
+.btn-primary-light{
+    font-family: 'Poppins', sans-serif;
+    width: 11.2rem;
+    height: 4.8rem;
+    border: 0.1rem solid var(--blue-2);
+    border-radius: 0.5rem;
+    color: var(--white);
+    background-color: var(--blue-2);
+    transition: 0.4s;
+}
+
+.btn-primary-light:hover{
+    background-color: var(--blue-1);
+    border: 1px solid var(--blue-1);
+}
+
+.btn-white{
+    font-family: 'Poppins', sans-serif;
+    width: 11.2rem;
+    height: 4.8rem;
+    border: 0.1rem solid var(--blue-1);
+    border-radius: 0.5rem;
+    color: var(--blue-1);
+    background-color: var(--white);
+    transition: 0.4s;
+}
+
+.btn-white:hover{
+    background-color: var(--blue-1);
+    color: var(--white);
+}
+
+.btn-white-light{
+    font-family: 'Poppins', sans-serif;
+    width: 11.2rem;
+    height: 4.8rem;
+    border: 0.1rem solid var(--blue-2);
+    border-radius: 0.5rem;
+    color: var(--blue-2);
+    background-color: var(--white);
+    transition: 0.4s;
+}
+
+.btn-white-light:hover{
+    background-color: var(--blue-2);
+    color: var(--white);
+}
+
+/* Navigation Bar */
+nav{
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--white);
+    color: var(--blue-1);
+    padding-top: 2rem;
+    padding-bottom: 6rem;
+    border-bottom: 1px solid var(--grey);
+}
+
+.nav-logo-img{
+    width: 10rem;
+    height: auto;
+    float: left;
+}
+
+.nav-menu{
+    float: right;
+}
+
+li{
+    display: inline-block;
+}
+
+.nav-item{
+    font-family: 'Poppins', sans-serif;
+    font-size: medium;
+    text-decoration: none;
+    color: var(--blue-1);
+    transition: 0.3;
+    text-align: center;
+    padding: 16px;
+}
+
+.nav-item:hover{
+    color: var(--blue-2);
+}
+.nav-item:active{
+    text-decoration: underline;
+    color: var(--blue-2);
+}
+
+/*A confession display*/
+
+
+.confession-box {
+    margin-left: 5rem;
+    margin-top: 5rem;
+
+}
+
+
+.home-confession {
+    background-color: var(--off-white);
+    color: #25292f;
+    border: 0.1rem solid #062a54;
+    border-radius: 1rem;
+    padding: 1rem;
+    height: 16rem;
+    width: 31rem;
+    position: relative;
+
+}
+
+.confession-header {
+    display: flex;
+    border-bottom: 0.1rem solid var(--blue-1);
+}
+
+#confession-date {
+    margin-left: 16rem;
+    font-weight: lighter;
+}
+
+#confession-info {
+    font-weight: normal;
+    padding-left: 1.5rem;
+}
+
+.confession-bottom {
+    border-top: 0.1rem solid var(--blue-1) ;
+    position: relative;
+    margin-top: 5rem;
+    padding: 1rem;
+}
+
+.btn-conf{
+    width: 6rem;
+    height: 3rem;
+    border: 0.05rem solid var(--blue-1);
+    border-radius: 1rem;
+    color: var(--grey);
+    background-color: var(--white);
+    margin-right: 0.4rem;
+    transition: 0.4s;
+}
+
+.btn-icon{
+    float: right;
+}
+
+.btn-conf:hover{
+    color: #4191eb;
+    border: 0.05rem solid var(--blue-2);
+}
+
+#conf-contact{
+   float: right;
+}
+
