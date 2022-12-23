@@ -102,6 +102,8 @@ class UserCreateView(APIView):
         permission_classes = [AllowAny]
         serializer = UserCreateSerializer(data=request.data)
         if serializer.is_valid():
-            serializer.save()
+            instance = serializer.save()
+            instance.set_password(instance.password)
+            instance.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
