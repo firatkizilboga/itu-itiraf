@@ -7,8 +7,9 @@ from rest_framework.authtoken.views import ObtainAuthToken
 from . import views
 
 urlpatterns = [
-    path('auth', ObtainAuthToken.as_view(), name='auth'),
-    path('profile', views.GetUserProfile.as_view(), name='profile'),
+    path('user/login', ObtainAuthToken.as_view(), name='auth'),
+    path('user', views.UserRetrieveView.as_view(), name='user'),
+    path('user/create', views.UserCreateView.as_view(), name='user-create'),
     path('confession/<int:pk>', views.ConfessionRetrieveView.as_view(), name='confession'),
     path('', views.ConfessionListView.as_view(), name='home'),
     path('confession/create', views.ConfessionCreateView.as_view(), name='confession-create'),

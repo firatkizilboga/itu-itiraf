@@ -31,11 +31,11 @@ response = requests.get(url)
 """
 
 
-url = 'http://127.0.0.1:8000/api/auth'
+url = 'http://127.0.0.1:8000/api/user/login'
 response = requests.post(url, data={'username':'firatkizilboga', 'password':'1234'})
 print(response.json())
 
-url = 'http://127.0.0.1:8000/api/profile'
+url = 'http://127.0.0.1:8000/api/user'
 response = requests.get(url, headers={'Authorization':'Token 0c374c993ff0e00ea462c258dfb973127ea60d54'})
 print(response.json())
 
@@ -54,4 +54,8 @@ url = 'http://127.0.0.1:8000/api/confession/1/comment/create'
 response = requests.post(url, data={'body': 'test comment', 'author': 'test author'},headers=headers)
 print(response.json())
 
-'http://firatkizilboga.pythonanywhere.com/'
+
+#post a create a user
+url = 'http://127.0.0.1:8000/api/user/create'
+response = requests.post(url, data={'username': 'firatk2', 'password': '12345', 'email': 'email@email.com', 'first_name': 'firat', 'last_name': 'kizilboga', 'instagram': ''})
+print(response.json())

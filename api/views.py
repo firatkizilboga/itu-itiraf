@@ -9,7 +9,8 @@ from rest_framework.authentication import TokenAuthentication, SessionAuthentica
 from confession.models import Confession, Comment
 from confession.serializers import ConfessionRetrieveSerializer, CommentCreateSerializer,CommentSerializer, ConfessionCreateSerializer
 from rest_framework.response import Response
-from .serializers import ProfileSerializer
+from .serializers import UserRetrieveSerializer, UserCreateSerializer
+from rest_framework import status
 
 # Create your views here.
 from . models import User
@@ -88,12 +89,19 @@ class CommentListView(ListAPIView):
         serializer_class = CommentSerializer(queryset, many=True)
         return Response(serializer_class.data)
 
-class GetUserProfile(APIView):
+class UserRetrieveView(APIView):
     permission_classes = [IsAuthenticated]
     authentication_classes = [TokenAuthentication]
     def get(self, request, format=None):
         user = request.user
-        serializer = ProfileSerializer(user)
+        serializer = UserRetrieveSerializer(user)
         return Response(serializer.data)
     
-
+class UserCreateView(APIView):
+    def post(self, request):
+        permission_classes = [AllowAny]
+        serializer = UserCreateSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
