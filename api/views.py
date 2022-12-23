@@ -32,10 +32,12 @@ class ConfessionCreateView(CreateAPIView):
         serializer = ConfessionCreateSerializer(data=request.data)
         if serializer.is_valid():
             if request.user.is_authenticated:
+                approved = True
                 user = request.user
             else:
+                approved = False
                 user = None
-            serializer.save(user=user)
+            serializer.save(user = user, approved=approved)
             return Response(serializer.data)
         return Response(serializer.errors)
 
