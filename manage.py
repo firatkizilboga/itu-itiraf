@@ -8,9 +8,9 @@ def main():
     """Run administrative tasks."""
     
 
-    if sys.argv[1] == 'debug':
+    if '-debug' in sys.argv[1]:
         os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'ituitiraf.debug_settings')
-        sys.argv[1] = 'runserver'
+        sys.argv[1] = sys.argv[1].replace('-debug', '')
     else:
         os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'ituitiraf.settings')
     try:

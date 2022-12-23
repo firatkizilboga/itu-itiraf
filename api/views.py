@@ -1,13 +1,18 @@
 from django.shortcuts import render
 #import the api views required to CRUD from rest_framework
 from rest_framework.generics import CreateAPIView, RetrieveAPIView, ListAPIView, GenericAPIView
+#import the api view class
+from rest_framework.views import APIView
+#import permissions from rest_framework
+from rest_framework.permissions import IsAuthenticated, IsAdminUser, AllowAny, IsAuthenticatedOrReadOnly
+from rest_framework.authentication import TokenAuthentication, SessionAuthentication
 from confession.models import Confession, Comment
 from confession.serializers import ConfessionRetrieveSerializer, CommentCreateSerializer,CommentSerializer, ConfessionCreateSerializer
-#import Response from rest_framework
 from rest_framework.response import Response
-import os
-# Create your views here.
+from .serializers import ProfileSerializer
 
+# Create your views here.
+from . models import User
 class ConfessionLikeView(GenericAPIView):
     queryset = Confession.objects.all()
     serializer_class = ConfessionRetrieveSerializer
@@ -19,15 +24,19 @@ class ConfessionLikeView(GenericAPIView):
         return Response(serializer.data)
 
 class ConfessionCreateView(CreateAPIView):
+    authentication_classes = [TokenAuthentication]
     queryset = Confession.objects.all()
     serializer_class = ConfessionCreateSerializer
-    def perform_create(self, serializer):
-        title = serializer.validated_data['title']
-        body = serializer.validated_data['body']
-        if body:
-            serializer.save()
-        else:
-            serializer.save(body=title)
+    def post(self,request,format = None):
+        serializer = ConfessionCreateSerializer(data=request.data)
+        if serializer.is_valid():
+            if request.user.is_authenticated:
+                user = request.user
+            else:
+                user = None
+            serializer.save(user=user)
+            return Response(serializer.data)
+        return Response(serializer.errors)
 
 class ConfessionRetrieveView(RetrieveAPIView):
     queryset = Confession.objects.filter(approved=True)
@@ -51,10 +60,18 @@ class ConfessionListView(ListAPIView):
 class CommentCreateView(CreateAPIView):
     queryset = Comment.objects.all()
     serializer_class = CommentCreateSerializer
+    authentication_classes = [TokenAuthentication]
 
-    def perform_create(self, serializer):
-        serializer.save(confession_id=self.kwargs['pk'])
-
+    def post(self,request,pk,format = None):
+        serializer = CommentCreateSerializer(data=request.data)
+        if serializer.is_valid():
+            if request.user.is_authenticated:
+                user = request.user
+            else:
+                user = None
+            serializer.save(user = user, confession_id=self.kwargs['pk'])
+            return Response(serializer.data)
+        return Response(serializer.errors)
 
 class CommentListView(ListAPIView):
     queryset = ' '
@@ -70,3 +87,13 @@ class CommentListView(ListAPIView):
         queryset = Comment.objects.filter(confession_id = pk).order_by('-date')[start:end]
         serializer_class = CommentSerializer(queryset, many=True)
         return Response(serializer_class.data)
+
+class GetUserProfile(APIView):
+    permission_classes = [IsAuthenticated]
+    authentication_classes = [TokenAuthentication]
+    def get(self, request, format=None):
+        user = request.user
+        serializer = ProfileSerializer(user)
+        return Response(serializer.data)
+    
+

@@ -24,6 +24,7 @@ class ConfessionRetrieveSerializer(serializers.ModelSerializer):
             'likes',
             'comments'
         ]
+    
     comments = serializers.SerializerMethodField()
     def get_comments(self, obj):
         return Comment.objects.filter(confession_id = obj.pk).count()
@@ -43,4 +44,5 @@ class CommentCreateSerializer(serializers.ModelSerializer):
             'confession_id',
             'author',
             'body',
+            'user'
         ]
