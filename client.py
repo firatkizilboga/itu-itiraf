@@ -1,87 +1,121 @@
 import requests
 localhost = 'http://localhost:8000'
 
-"""
-#post a confession
-url = f'{localhost}/api/confession/create'
-response = requests.post(url, data={'title': 'test2', 'body': '2test body', 'author': 'test author'})
-print((response.json()))
-"""
+#create an account
+def create_account(username,password,email,first_name,last_name,instagram):
+    url = localhost + '/api/user/create'
+    data = {'username': username,
+            'password': password,
+            'email': email,
+            'first_name': first_name,
+            'last_name': last_name,
+            'instagram': instagram
+            }
+    response = requests.post(url, data=data)
+    return response
+
+#login
+def login(username,password):
+    url = localhost + '/api/user/login'
+    data = {'username': username,
+            'password': password}
+    response = requests.post(url, data=data)
+    return response
+
+#create a confession
+def create_confession(title,body,author,token=None):
+    url = localhost + '/api/confession/create'
+    data = {'title': title,
+            'body': body,
+            'author': author,
+            }
+    headers = {
+    }
+
+    if token:
+        token = 'Token ' + token
+        headers['Authorization'] = token
+    response = requests.post(url, data=data, headers=headers)
+    return response
+
+#retrieve a confession
+def retrieve_confession(pk):
+    url = localhost + f'/api/confession/{pk}' 
+    response = requests.get(url)
+    return response
+
+#retrieve all confessions
+def retrieve_all_confessions():
+    url = localhost + '/api/confessions'
+    response = requests.get(url)
+    return response
+
+#comment
+def comment(confession_id,author,body,token=None):
+    url = localhost + f'/api/confession/{confession_id}/comment/create'
+    data = {
+            'author': author,
+            'body': body,
+            }
+    headers = {
+
+    }
+    if token:
+        token = 'Token ' + token
+        headers['Authorization'] = token
+    response = requests.post(url, data=data, headers=headers)
+    return response
+
+#retrieve all comments of a confession
+def retrieve_all_comments(confession_id):
+    url = localhost + f'/api/confession/{confession_id}/comments'
+    response = requests.get(url)
+    return response
+
+#like
+def like(post_id,token=None):
+    url = localhost + f'/api/confession/{post_id}/like'
+    response = requests.put(url)
+    return response
 
 
-#get the spesific confession with id 1
-url = f'{localhost}/api/confession/10'
-response = requests.get(url)
-print((response.json()))
 
-#like the confession with id 1
-url = f'{localhost}/api/confession/10/like'
-response = requests.put(url)
-print((response.json()))
+if __name__ == '__main__':
+    user = 'test'
+    password = 'test'
+    email = 'email13@email.com'
+    instagram = 'instagram12313421'
 
-#post a comment
-url = f'{localhost}/api/confession/10/comment/create'
-response = requests.post(url, data={'body': 'test comment', 'author': 'test author'})
-print((response.json()))
+    #create an account
+    response = create_account(user,password,email,'first','last',instagram)
+    print(response.status_code)
 
-#get the comments of confession with id 1
-url = f'{localhost}/api/confession/10/comments'
-response = requests.get(url)
-print((response.json()))
+    #login
+    response = login(user,password)
+    print(response.status_code)
+    token = response.json()['token']
+    
+    #create a confession
+    response = create_confession('title','body','author',token=None)
+    print(response.status_code)
+    pk = 34
 
+    #retrieve a confession
+    response = retrieve_confession(pk)
+    print(response.status_code)
 
+    #retrieve all confessions
+    response = retrieve_all_confessions()
+    print(response.status_code)
 
+    #comment
+    response = comment(pk,'author','body',token=None)
+    print(response.status_code)
 
-"""
-#reate a user
-url = 'http://firatkizilboga.pythonanywhere.com/api/user/create'
-response = requests.post(url, data={'username': 'firatk3', 'password': '12345', 'email': 'email2@email.com', 'first_name': 'firat', 'last_name': 'kizilboga', 'instagram': 'firatkizilboga2'})
-print(response.json())
+    #retrieve all comments of a confession
+    response = retrieve_all_comments(pk)
+    print(response.status_code)
 
-url = '{localhost}/api/user/login'
-response = requests.post(url, data={'username':'firatk3', 'password':'12345'})
-print(response.json())
-
-
-headers = {'Authorization':'Token ' + response.json()['token']}
-url = '{localhost}/api/user'
-response = requests.get(url, headers=headers)
-print(response.json())
-
-#post a confession
-url = '{localhost}/confession/create'
-response = requests.post(url, data={'title': 'test', 'body': 'test body', 'author': 'test author'}, headers=headers)
-print(response.json())
-
-#post a comment
-url = '{localhost}/confession/1/comment/create'
-response = requests.post(url, data={'body': 'test comment', 'author': 'test author'},headers=headers)
-print(response.json())
-
-#reate a user
-url = '{localhost}/api/user/create'
-response = requests.post(url, data={'username': 'firatk3', 'password': '12345', 'email': 'email2@email.com', 'first_name': 'firat', 'last_name': 'kizilboga', 'instagram': 'firatkizilboga2'})
-print(response.json())
-
-url = '{localhost}/api/user/login'
-response = requests.post(url, data={'username':'firatk3', 'password':'12345'})
-print(response.json())
-
-
-headers = {'Authorization':'Token ' + response.json()['token']}
-url = '{localhost}/api/user'
-response = requests.get(url, headers=headers)
-print(response.json())
-
-#post a confession
-url = '{localhost}/api/confession/create'
-response = requests.post(url, data={'title': 'test', 'body': 'test body', 'author': 'test author'}, headers=headers)
-print(response.json())
-
-#post a comment
-url = '{localhost}/api/confession/1/comment/create'
-response = requests.post(url, data={'body': 'test comment', 'author': 'test author'},headers=headers)
-print(response.json())
-"""
-
-
+    #like
+    response = like(pk)
+    print(response.status_code)

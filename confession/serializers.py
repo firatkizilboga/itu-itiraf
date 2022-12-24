@@ -10,6 +10,7 @@ class ConfessionCreateSerializer(serializers.ModelSerializer):
             'title',
             'body',
             'author',
+            'image',
         ]
     
 class ConfessionRetrieveSerializer(serializers.ModelSerializer):

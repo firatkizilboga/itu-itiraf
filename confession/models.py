@@ -9,7 +9,7 @@ class Post(models.Model):
     approved = models.BooleanField(default=False)
     likes = models.IntegerField(default=0)
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
-    
+    image = models.ImageField(null = True, blank = True)
     class Meta:
         abstract = True
     def __str__(self):
