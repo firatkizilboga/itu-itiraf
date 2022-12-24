@@ -32,3 +32,12 @@ class UserCreateSerializer(serializers.ModelSerializer):
     def perform_create(self, validated_data):
         user = User.objects.create_user(**validated_data)
         return user
+
+class UserIdentitySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = [
+            'first_name',
+            'last_name',
+            'instagram',
+        ]

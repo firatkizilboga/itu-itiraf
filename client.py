@@ -78,9 +78,98 @@ def like(post_id,token=None):
     response = requests.put(url)
     return response
 
+#reveal identity
+def reveal_identity(pk,token=None):
+    url = localhost + f'/api/confession/{pk}/reveal-identity'
+    headers = {
+
+    }
+    if token:
+        token = 'Token ' + token
+        headers['Authorization'] = token
+    response = requests.post(url, headers=headers)
+    return response
+
+#get identities
+def get_identities(pk,token=None):
+    url = localhost + f'/api/confession/{pk}/revealed-identities'
+    headers = {
+            
+    }
+    if token:
+        token = 'Token ' + token
+        headers['Authorization'] = token
+    response = requests.post(url, data={}, headers=headers)
+    return response
 
 
 if __name__ == '__main__':
+    user1 = {
+        'username': 'IPEK',
+        'password': '123456',
+        'email': 'IPEK@email.com',
+        'first_name': 'IPEK',
+        'last_name': 'IPEK',
+        'instagram': 'IPEKs INSTA',        
+    }
+    user2 = {
+        'username' : 'FIRAT',
+        'password' : '123456',
+        'email' : 'FIRAT@email.com',
+        'first_name' : 'FIRAT',
+        'last_name' : 'FIRAT',
+        'instagram' : 'FIRATs INSTA',
+    }
+
+    #create an account
+    """
+    response = create_account(**user1)
+    print(response.status_code)
+    response = create_account(**user2)
+    print(response.status_code)
+    """
+
+    #login
+    response = login(user1['username'],user1['password'])
+    print(response.status_code)
+    token1 = response.json()['token']
+    response = login(user2['username'],user2['password'])
+    print(response.status_code)
+    token2 = response.json()['token']
+
+    #create a confession
+    #response = create_confession('meddeki yakışıklı?','medde bi çocuk vardı deli gibi django yazıyordu','bilkentli',token=token1)
+    #print(response.status_code)
+
+    #get all confessions
+    confession = retrieve_all_confessions().json()[0]
+
+    pk  = confession.get('id')
+    if not pk:
+        pk = confession.get('pk')
+    
+    #reveal identity
+    response = reveal_identity(pk,token=token2)
+    print(response.json())
+
+    #get identities
+    response = get_identities(pk,token=token1)
+    print(response.json())
+
+    #get identites by the other guy
+    response = get_identities(pk,token=token2)
+    print(response)
+
+    #get identities anonymously
+    response = get_identities(pk)
+    print(response)
+
+    #reveal identity anonymously
+    response = reveal_identity(pk)
+
+
+    
+    """
     user = 'test'
     password = 'test'
     email = 'email13@email.com'
@@ -119,3 +208,4 @@ if __name__ == '__main__':
     #like
     response = like(pk)
     print(response.status_code)
+    """

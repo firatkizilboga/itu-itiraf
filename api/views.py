@@ -6,10 +6,10 @@ from rest_framework.views import APIView
 #import permissions from rest_framework
 from rest_framework.permissions import IsAuthenticated, IsAdminUser, AllowAny, IsAuthenticatedOrReadOnly
 from rest_framework.authentication import TokenAuthentication, SessionAuthentication
-from confession.models import Confession, Comment
+from confession.models import Confession, Comment, ConfessionIdentityRelation
 from confession.serializers import ConfessionRetrieveSerializer, CommentCreateSerializer,CommentSerializer, ConfessionCreateSerializer
 from rest_framework.response import Response
-from .serializers import UserRetrieveSerializer, UserCreateSerializer
+from .serializers import UserRetrieveSerializer, UserCreateSerializer, UserIdentitySerializer
 from rest_framework import status
 
 # Create your views here.
@@ -107,3 +107,29 @@ class UserCreateView(APIView):
             instance.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+#reveal identity
+class IdentityRevealView(APIView):
+    #accepted methods
+    permission_classes = [IsAuthenticated]
+    authentication_classes = [TokenAuthentication]
+    def post(self, request, pk, format=None):
+        user = request.user
+        try:
+            relation = ConfessionIdentityRelation.objects.create(user=user, confession_id=pk)
+            relation.save()
+        except Exception:
+            return Response(data = ConfessionIdentityRelation.objects.get(confession_id=pk).user.username, status=status.HTTP_200_OK)
+        #return create success response
+        return Response(status=status.HTTP_201_CREATED)
+
+class UserIdentityListView(APIView):
+    permission_classes = [IsAuthenticated]
+    authentication_classes = [TokenAuthentication]
+    def post(self, request, pk, format=None):
+        user = request.user
+        if Confession.objects.get(pk=pk).user == user:
+            queryset = User.objects.filter(confessionidentityrelation__confession_id=pk)
+            return Response(UserIdentitySerializer(queryset, many=True).data)
+        else:
+            return Response(status=status.HTTP_401_UNAUTHORIZED)

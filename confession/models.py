@@ -17,9 +17,18 @@ class Post(models.Model):
     
 class Confession(Post):
     title = models.CharField(max_length=100)
+    def __str__(self):
+        return self.title
 
 class Comment(Post):
     confession = models.ForeignKey(Confession, on_delete=models.CASCADE)
     def __str__(self):
         return '%s - %s' % (self.confession.title, self.body)
 
+class ConfessionIdentityRelation(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    confession = models.ForeignKey(Confession, on_delete=models.CASCADE)
+    class Meta:
+        unique_together = ('user', 'confession')
+    def __str__(self):
+        return '%s - %s' % (self.user.username, self.confession.title)
