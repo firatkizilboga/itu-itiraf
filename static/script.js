@@ -1,4 +1,4 @@
-let url = `http://firatkizilboga.pythonanywhere.com/api`;
+let url = `http://localhost:8000/api/confessions`;
 
 /*
 let confTitle = document.getElementById("confession-title");

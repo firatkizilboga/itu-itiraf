@@ -20,6 +20,7 @@ class ConfessionRetrieveSerializer(serializers.ModelSerializer):
             'pk',
             'title',
             'body',
+            'image',
             'author',
             'date',
             'likes',
