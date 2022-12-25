@@ -6,3 +6,39 @@
 
     author ve body boş olabilir
     -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        const confess = async() => {
+            window.alert("İtiraf ediliyor...")
+            const image = document.querySelector("#img")
+            const title = document.querySelector("#title")
+            const body = document.querySelector("#body")
+            const author = document.querySelector("#author")
+            let formData = new FormData()
+            formData.append("image", image.files[0])
+            formData.append("title", title.value)
+            formData.append("body", body.value)
+            formData.append("author", author.value)
+            const response = await fetch("http://localhost:8000/api/confession/create", {
+                method: "POST",
+                body: formData
+            }).then(res => res.json()).catch(err => console.log(err))
+            console.log(response)
+        }
+    </script>
+</head>
+
+<body>
+    <input type="file" accept="image/" id = "img">
+    <input type="text" id = "title">
+    <input type="text" id = "body">
+    <input type="text" id = "author">
+    <button onclick = "confess()">İtiraf Et!</button>
+    
+</body>
+</html>
