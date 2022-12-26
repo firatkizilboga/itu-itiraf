@@ -14,8 +14,8 @@ async function getData() {
     var confBody = data[i].body;
     var confLikes = data[i].likes;
     var confComments = data[i].comments;
-    var confImg = data[i].img;
-
+    var confImg = data[i].image;
+    
     createConfessionDiv(confTitle, confDate, confBody, confImg, confLikes, confComments);
   }
   
