@@ -21,7 +21,7 @@ async function getData() {
 }
 window.addEventListener("load", getData);
 
-function createConfessionDiv(confTitle, confDate, confBody, confLikes, confComments) {
+function createConfessionDiv(confTitle, confDate, confBody, confImg ,confLikes, confComments) {
   // Creating a div element
   var divElement = document.createElement("Div");
   divElement.id = "divID";
@@ -53,7 +53,15 @@ function createConfessionDiv(confTitle, confDate, confBody, confLikes, confComme
   confInfo.appendChild(confInfoTextext);
   divElement.appendChild(confInfo);
   confInfo.classList.add("confession-info");
-  
+
+  //create an image tag if img is not null
+  if(confImg != null)
+  {
+    var confImg = document.createElement("img");
+    confImg.src = confImg;
+    divElement.appendChild(confImg);
+    confImg.classList.add("confession-img");
+  }
 
   //Adding like, comment and insta button
   var likeButton = document.createElement("Button");
