@@ -55,11 +55,11 @@ function createConfessionDiv(confTitle, confDate, confBody, confImg ,confLikes, 
   confInfo.classList.add("confession-info");
 
   //create an image tag if img is not null
-  if(confImg != null)
+  if(confImg!= null)
   {
-    var confImg = document.createElement("img");
+    var confImage = document.createElement("img");
     confImg.src = confImg;
-    divElement.appendChild(confImg);
+    divElement.appendChild(confImage);
     confImg.classList.add("confession-img");
   }
 
