@@ -2,3 +2,82 @@
         <!-- Beğenme boş put request-->
         <!-- Comment ekleme kısmında sadece author ve body göndermen lazım  post request-->
         
+        <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/ee4f3021a8.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="style.css">
+    <title>Confession</title>
+</head>
+<body>
+
+    <nav>
+        <div class="nav-logo"><img  class="nav-logo-img" src="itu-logo-big.png" alt=""></div>
+        <div class="nav-menu">
+            <ul class="nav-menu-links">
+                <li><a class="nav-item" href="">Anasayfa</a></li>
+                <li><a class="nav-item" href="">İtiraf Et</a></li>
+                <li><a class="nav-item" href="">Hakkımızda</a></li>
+                <li><a class="nav-item" href="">Üye Ol</a></li>
+                <li><a class="nav-item" href="">Giriş Yap</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="confession-display">
+        <ul>
+            <li class="conf-home"></li>
+            <li class="conf-home"></li>
+            <li class="conf-home"></li>
+        </ul>
+    </div>
+
+    <div class="confession-show">
+        <div class="confession-header">
+            <h3 id="confession-title">Confession Title</h3>
+            <h4 id="confession-date">mm.dd.yy</h4>
+        </div>
+        <h4 id="confession-info">Here comes a little info about confession...</h4>
+        <div class="confession-bottom">
+            <button class="btn-conf" id="likes">LN
+                <i class="fa-regular fa-heart"></i>
+            </button>
+            <button class="btn-conf" id="conf-contact">
+                <i class="fa-brands fa-instagram"></i>
+            </button>
+        </div>
+        <div class="comment-send">
+            <input class="comment-input" type="text" placeholder="Yorum Ekle">
+            <button class="btn-conf send-btn">Gönder</button>
+        </div>
+        
+        <div class="comments-show">
+            <div class="comment">
+                <p class="comment-p">Lorem ipsum dolor sit amet.</p>
+                <button class="btn-conf" id="conf-contact-comment">
+                    <i class="fa-brands fa-instagram"></i>
+                </button>
+            </div>
+            <div class="comment">
+                <p class="comment-p">Lorem ipsum dolor sit amet.</p>
+                <button class="btn-conf" id="conf-contact-comment">
+                    <i class="fa-brands fa-instagram"></i>
+                </button>
+            </div>
+            <div class="comment">
+                <p class="comment-p">Lorem ipsum dolor sit amet.</p>
+                <button class="btn-conf" id="conf-contact-comment">
+                    <i class="fa-brands fa-instagram"></i>
+                </button>
+            </div>
+            
+
+        </div>
+    </div>
+</body>
+</html>

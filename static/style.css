@@ -190,3 +190,8 @@ li{
    float: right;
 }
 
+.confession-img{
+    margin: 2rem;
+    width: 16rem;
+    height: auto;
+    }
