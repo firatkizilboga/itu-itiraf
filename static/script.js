@@ -54,15 +54,7 @@ function createConfessionDiv(confTitle, confDate, confBody, confImg ,confLikes, 
   confInfo.appendChild(confInfoTextext);
   divElement.appendChild(confInfo);
   confInfo.classList.add("confession-info");
-
-  //create an image tag if img is not null
-  if(confImg != null)
-  {
-    var confImage = document.createElement("img");
-    confImage.src = confImg;
-    divElement.appendChild(confImage);
-    confImage.classList.add("confession-img");
-  }
+  
 
   //Adding like, comment and insta button
   var likeButton = document.createElement("Button");
