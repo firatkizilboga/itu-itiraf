@@ -60,7 +60,7 @@ function createConfessionDiv(confTitle, confDate, confBody, confImg ,confLikes, 
     var confImage = document.createElement("img");
     confImg.src = confImg;
     divElement.appendChild(confImage);
-    confImg.classList.add("confession-img");
+    confImage.classList.add("confession-img");
   }
 
   //Adding like, comment and insta button
