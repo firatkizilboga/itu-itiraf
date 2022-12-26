@@ -131,14 +131,16 @@ li{
 
 
 .home-confession {
+    font-family: 'Poppins', sans-serif;
     background-color: var(--off-white);
     color: #25292f;
     border: 0.1rem solid #062a54;
     border-radius: 1rem;
     padding: 1rem;
-    height: 16rem;
+    height: fit-content;
     width: 31rem;
     position: relative;
+    margin: 5rem;
 
 }
 
@@ -147,12 +149,12 @@ li{
     border-bottom: 0.1rem solid var(--blue-1);
 }
 
-#confession-date {
+.confession-date {
     margin-left: 16rem;
     font-weight: lighter;
 }
 
-#confession-info {
+.confession-info {
     font-weight: normal;
     padding-left: 1.5rem;
 }
