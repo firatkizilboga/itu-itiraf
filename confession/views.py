@@ -13,3 +13,11 @@ def confess(request):
 
 def about(request):
     return render(request, 'confessions/about.html')
+
+#sign-up
+def signup(request):
+    return render(request, 'confessions/sign-up.html')
+
+#sign-in
+def signin(request):
+    return render(request, 'confessions/sign-in.html')
