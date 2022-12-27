@@ -13,10 +13,10 @@ async function getData() {
     var confDate = data[i].date.toString().split('T')[0];
     var confBody = data[i].body;
     var confLikes = data[i].likes;
-    var confComments = data[i].comments;
-    var confImg = data[i].image;
-
+    var confComments =  data[i].comments;
+    var confImg = "http://firatkizilboga.pythonanywhere.com/" + data[i].image ;
     
+    console.log(confImg);
     
     createConfessionDiv(confTitle, confDate, confBody, confImg, confLikes, confComments);
   }
@@ -49,6 +49,18 @@ function createConfessionDiv(confTitle, confDate, confBody, confImg ,confLikes, 
   confHeader.appendChild(confDatee);
   divElement.appendChild(confHeader);
   confHeader.classList.add("confession-header");
+
+  
+  //Adding img
+  if(confImg != "http://firatkizilboga.pythonanywhere.com/null")
+  {
+    var confImage = document.createElement("img");
+    confImage.setAttribute('src', confImg);
+    console.log(confImg);
+    divElement.appendChild(confImage);
+    confImage.classList.add("confession-img");
+  }
+
   
   // Adding a paragraph to it
   var confInfo = document.createElement("P");
