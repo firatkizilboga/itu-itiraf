@@ -30,7 +30,7 @@
             }
         }
         const confess = async () => {
-
+            
             const image = document.querySelector("#img");
             const title = document.querySelector("#title")
             const body = document.querySelector("#body")
@@ -39,7 +39,9 @@
             const sendBtn = document.getElementById('send-btn');
 
             let formData = new FormData()
-            formData.append("image", image.files[0])
+            if (image.files.length == 1) {
+                formData.append("image", image.files[0])
+            }
             formData.append("title", title.value)
             formData.append("body", body.value)
             formData.append("author", author.value)
