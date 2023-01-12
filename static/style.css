@@ -445,14 +445,14 @@ li{
 }
 
 .input-box{
-    font-size: 2rem;
+    font-size: 1.8rem;
     border: none;
     border-bottom: 0.1rem solid #062a5462;
     background-color: var(--off-white);
-    margin-bottom: 4rem;
+    margin-bottom: 3rem;
     color: var(--grey);
     padding: 0.5rem;
-    width: 60rem;
+    width: 40rem;
     
 
 }
