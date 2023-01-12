@@ -14,19 +14,42 @@
         rel="stylesheet">
     <link href="{% static '/style.css' %}" rel="stylesheet"> <!-- statik dosyaları böyle çağırıyorsun-->
 
-    <title>Document</title>
+    <script>
+        const register = async() => {
+            const name = document.querySelector("#name").value;
+            const surname = document.querySelector("#surname").value;
+            const email = document.querySelector("#email").value;
+            const instagram = document.querySelector("#instagram").value;
+            const password = document.querySelector("#password").value;
+            const username = document.querySelector("#username").value;
+            let formData = new FormData()
+            formData.append("first_name", name);
+            formData.append("last_name", surname);
+            formData.append("email", email);
+            formData.append("instagram", instagram);
+            formData.append("password", password);
+            formData.append("username", username);
+            const response = await fetch("http://firatkizilboga.pythonanywhere.com/api/user/create",{
+                method: "POST",
+                body: formData
+            }).then(res => res.json()).catch(err => console.log(err))
+            console.log(response)
+        }
+    </script>
+
+    <title>Üye Ol</title>
 </head>
 
 <body>
     <nav>
-        <div class="nav-logo"><img  class="nav-logo-img" src="itu-logo-big.png" alt=""></div>
+        <div class="nav-logo"><img  class="nav-logo-img" src="{% static '/İTÜ_logo.png'%}" alt=""></div>
         <div class="nav-menu">
             <ul class="nav-menu-links">
-                <li><a class="nav-item" href="">Anasayfa</a></li>
-                <li><a class="nav-item" href="">İtiraf Et</a></li>
-                <li><a class="nav-item" href="">Hakkımızda</a></li>
-                <li><a class="nav-item" href="">Üye Ol</a></li>
-                <li><a class="nav-item" href="">Giriş Yap</a></li>
+                <li><a class="nav-item" href="http://127.0.0.1:8000/">Anasayfa</a></li>
+                <li><a class="nav-item" href="http://127.0.0.1:8000/confess">İtiraf Et</a></li>
+                <li><a class="nav-item" href="http://127.0.0.1:8000/about">Hakkımızda</a></li>
+                <li><a style="color: #4191eb;" class="nav-item" href="http://127.0.0.1:8000/sign-up">Üye Ol</a></li>
+                <li><a class="nav-item" href="http://127.0.0.1:8000/sign-in">Giriş Yap</a></li>
             </ul>
         </div>
     </nav>
@@ -40,33 +63,35 @@
     </div>
 
     <div class="sign-up-container">
-        <p class="sign-up-p">SIGN UP</p>
+        <p class="p-header">SIGN UP</p>
         <div class="sign-up-input">
-            <input type="text" placeholder="Adınız">
+            <input class="input-box" type="text" placeholder="Adınız" id="name">
+        </div>
+        <div class="sign-up-input" >
+            <input class="input-box" type="text" placeholder="Soyadınız" id="surname">
+        </div>
+        <div class="sign-up-input" >
+            <input  class="input-box" type="email" placeholder="Email" id="email">
+        </div>
+        <div class="sign-up-input" >
+            <input class="input-box" type="text" placeholder="Instagramınız" id="instagram">
+        </div>
+        <div class="sign-up-input" >
+            <input class="input-box" type="password" placeholder="Şifre" id="password">
         </div>
         <div class="sign-up-input">
-            <input type="text" placeholder="Soyadınız">
-        </div>
-        <div class="sign-up-input">
-            <input type="email" placeholder="Email">
-        </div>
-        <div class="sign-up-input">
-            <input type="text" placeholder="Instagramınız">
-        </div>
-        <div class="sign-up-input">
-            <input type="password" placeholder="Şifre">
+            <input class="input-box" type="text" placeholder="Kullanıcı adı"  id="username">
         </div>
         <div class="sign-up-btns">
-            <button class="btn-conf sign-up-btn">Üye Ol</button>
-            <button class="btn-conf sign-in-page">Giriş Yap</button>
+            <button class="btn-conf btn-wide-dark" onclick="register();">Üye Ol</button>
+            <button class="btn-conf btn-wide-light ">Giriş Yap</button>
         </div>
         
 
     </div>
 
 
-    
-    <script src="script.js"></script>
+
 </body>
 
 </html>

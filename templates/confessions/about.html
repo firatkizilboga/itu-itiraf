@@ -1,1 +1,60 @@
 <!--iletişim sayfası yeter-->
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/ee4f3021a8.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="{% static '/style.css' %}">
+
+    <title>Contact Us</title>
+</head>
+<body class="bodyb">
+    <nav>
+        <div class="nav-logo"><img  class="nav-logo-img" src="{% static '/İTÜ_logo.png'%}" alt=""></div>
+        <div class="nav-menu">
+            <ul class="nav-menu-links">
+                <li><a class="nav-item" href="http://127.0.0.1:8000/">Anasayfa</a></li>
+                <li><a class="nav-item" href="http://127.0.0.1:8000/confess">İtiraf Et</a></li>
+                <li><a style="color: #4191eb;" class="nav-item" href="http://127.0.0.1:8000/about">Hakkımızda</a></li>
+                <li><a class="nav-item" href="http://127.0.0.1:8000/sign-up">Üye Ol</a></li>
+                <li><a class="nav-item" href="http://127.0.0.1:8000/sign-in">Giriş Yap</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <div class="about-us-container">
+        <div class="about-us-div">
+            <h2>Location</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid, cumque!</p>
+        </div>
+        <div class="about-us-div">
+            <h2>Around The Web</h2>
+            <div class="btn-div-contact">
+                 <button class="btn-conf" id="conf-contact-comment">
+                <i class="fa-brands fa-instagram"></i>
+            </button>
+            <button class="btn-conf" id="conf-contact-comment">
+                <i class="fa-brands fa-linkedin-in"></i>
+            </button>
+            <button class="btn-conf" id="conf-contact-comment">
+                <i class="fa-regular fa-envelope"></i> 
+            </button>
+            </div>
+           
+           
+        </div>
+        <div class="about-us-div">
+            <h2>Hakkımızda</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum debitis quod cumque modi. Exercitationem mollitia reprehenderit repudiandae praesentium in repellat aliquid iste illum, qui laborum, quidem, officiis cum ullam eos?</p>
+        </div>
+        
+    </div>
+    
+    
+</body>
+</html>

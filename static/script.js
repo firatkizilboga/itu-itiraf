@@ -1,3 +1,6 @@
+
+/* Home Page Script
+
 let url = `http://firatkizilboga.pythonanywhere.com/api/confessions`;
 
 async function getData() {
@@ -98,3 +101,5 @@ function createConfessionDiv(confTitle, confDate, confBody, confImg ,confLikes, 
   // Appending the div element to body
   document.getElementById("main").appendChild(divElement);
 }
+
+*/

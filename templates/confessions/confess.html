@@ -6,19 +6,38 @@
 
     author ve body boş olabilir
     -->
+{%load static%}
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <script src="https://kit.fontawesome.com/ee4f3021a8.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="{% static '/style.css' %}">
+    <title>İtiraf Et</title>
     <script>
-        const confess = async() => {
-            window.alert("İtiraf ediliyor...")
-            const image = document.querySelector("#img")
+        function checkImg(){
+            if (document.getElementById("img") == null) {
+                console.log("no files selected");
+            }
+            else
+            {
+                document.getElementById('label-p').innerHTML = "Fotoğraf Seçildi";
+                
+            }
+        }
+        const confess = async () => {
+
+            const image = document.querySelector("#img");
             const title = document.querySelector("#title")
             const body = document.querySelector("#body")
             const author = document.querySelector("#author")
+            const imgLabel = document.getElementById('img-label');
+            const sendBtn = document.getElementById('send-btn');
+
             let formData = new FormData()
             formData.append("image", image.files[0])
             formData.append("title", title.value)
@@ -29,16 +48,65 @@
                 body: formData
             }).then(res => res.json()).catch(err => console.log(err))
             console.log(response)
+            console.log("itiraf edildi");
+          
+           image.remove();
+           title.remove();
+           body.remove();
+           author.remove();
+           sendBtn.remove();
+           imgLabel.remove();
+
+            var confButton = document.createElement("Button");
+            confButton.innerHTML = "Yeni İtiraf Gönder";
+            document.getElementById('send-confess-div').appendChild(confButton);
+            confButton.classList.add("btn-conf");
+            confButton.classList.add("btn-wide-dark");
+            const header = document.getElementById('header').innerHTML = "İtirafınız Gönderildi";
+
         }
     </script>
 </head>
 
 <body>
-    <input type="file" accept="image/" id = "img">
-    <input type="text" id = "title">
-    <input type="text" id = "body">
-    <input type="text" id = "author">
-    <button onclick = "confess()">İtiraf Et!</button>
     
+
+
+    <nav>
+        <div class="nav-logo"><img class="nav-logo-img" src="{% static '/İTÜ_logo.png'%}" alt=""></div>
+        <div class="nav-menu">
+            <ul class="nav-menu-links">
+                <li><a class="nav-item" href="http://127.0.0.1:8000/">Anasayfa</a></li>
+                <li><a style="color: #4191eb;" class="nav-item" href="http://127.0.0.1:8000/confess">İtiraf Et</a></li>
+                <li><a class="nav-item" href="http://127.0.0.1:8000/about">Hakkımızda</a></li>
+                <li><a class="nav-item" href="http://127.0.0.1:8000/sign-up">Üye Ol</a></li>
+                <li><a class="nav-item" href="http://127.0.0.1:8000/sign-in">Giriş Yap</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div  id="send-confess-div" class="send-confess">
+        
+        <p id="header" class="p-header">İtiraf Et</p>
+        <div class="sign-up-input">
+            <input id="title" class="input-box" type="text" placeholder="Başlık">
+        </div>
+        <div class="sign-up-input">
+            <input id="body" class="input-box" type="text" placeholder="İtirafınızı buraya yazınız...">
+        </div>
+        <div class="sign-up-input">
+            <input id="author" class="input-box" type="text" placeholder="Nickiniz">
+        </div>
+        <div class="sign-up-btns">
+            <label id="img-label" class="add-pic-input btn-wide-light btn-conf" for="img">
+                <p id="label-p">Fotoğraf Ekle</p>
+            </label>
+            <input onchange="checkImg();" id="img" type="file">
+            <button id="send-btn" class="btn-conf btn-wide-dark" onclick="confess();">Gönder</button>
+        </div>
+    </div>
+
+
 </body>
+
 </html>

@@ -1,7 +1,7 @@
 {{pk}}  <!-- linkteki sayı bu. api/confession/pk sana json olarak o confession'un içeriğini gönderecek. direkt url'den de çıkartabilirsin bu çalışmazsa-->
         <!-- Beğenme boş put request-->
         <!-- Comment ekleme kısmında sadece author ve body göndermen lazım  post request-->
-        
+        {%load static%}
         <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,20 +11,20 @@
     <script src="https://kit.fontawesome.com/ee4f3021a8.js" crossorigin="anonymous"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="{% static '/style.css' %}">
     <title>Confession</title>
 </head>
 <body>
 
     <nav>
-        <div class="nav-logo"><img  class="nav-logo-img" src="itu-logo-big.png" alt=""></div>
+        <div class="nav-logo"><img  class="nav-logo-img" src="{% static '/İTÜ_logo.png'%}" alt=""></div>
         <div class="nav-menu">
             <ul class="nav-menu-links">
-                <li><a class="nav-item" href="">Anasayfa</a></li>
-                <li><a class="nav-item" href="">İtiraf Et</a></li>
-                <li><a class="nav-item" href="">Hakkımızda</a></li>
-                <li><a class="nav-item" href="">Üye Ol</a></li>
-                <li><a class="nav-item" href="">Giriş Yap</a></li>
+                <li><a class="nav-item" href="http://127.0.0.1:8000/">Anasayfa</a></li>
+                <li><a class="nav-item" href="http://127.0.0.1:8000/confess">İtiraf Et</a></li>
+                <li><a class="nav-item" href="http://127.0.0.1:8000/about">Hakkımızda</a></li>
+                <li><a class="nav-item" href="http://127.0.0.1:8000/sign-up">Üye Ol</a></li>
+                <li><a class="nav-item" href="http://127.0.0.1:8000/sign-in">Giriş Yap</a></li>
             </ul>
         </div>
     </nav>
@@ -37,7 +37,7 @@
         </ul>
     </div>
 
-    <div class="confession-show">
+    <div class="confession-show a-conf-show">
         <div class="confession-header">
             <h3 id="confession-title">Confession Title</h3>
             <h4 id="confession-date">mm.dd.yy</h4>
@@ -60,19 +60,19 @@
             <div class="comment">
                 <p class="comment-p">Lorem ipsum dolor sit amet.</p>
                 <button class="btn-conf" id="conf-contact-comment">
-                    <i class="fa-brands fa-instagram"></i>
+                    <i class="fa-regular fa-heart"></i>
                 </button>
             </div>
             <div class="comment">
                 <p class="comment-p">Lorem ipsum dolor sit amet.</p>
                 <button class="btn-conf" id="conf-contact-comment">
-                    <i class="fa-brands fa-instagram"></i>
+                    <i class="fa-regular fa-heart"></i>
                 </button>
             </div>
             <div class="comment">
                 <p class="comment-p">Lorem ipsum dolor sit amet.</p>
                 <button class="btn-conf" id="conf-contact-comment">
-                    <i class="fa-brands fa-instagram"></i>
+                    <i class="fa-regular fa-heart"></i>
                 </button>
             </div>
             

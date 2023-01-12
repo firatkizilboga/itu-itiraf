@@ -13,20 +13,36 @@
         href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Montserrat:wght@400;700&family=Open+Sans:wght@300&family=Poppins:wght@200;400&family=Work+Sans:wght@300&display=swap"
         rel="stylesheet">
     <link href="{% static '/style.css' %}" rel="stylesheet">
+    <script>
+        async function signIn() {
+            let url = `http://firatkizilboga.pythonanywhere.com/api/user`;
+            
+            const email = document.querySelector("#email").value;
+            const password = document.querySelector("#password").value;
+            
+            const response = await fetch(url); // buraya api adresini yaz
+            const data = await response.json();
+            console.log(data); // datayla ne yapılacaksa yap
 
-    <title>Document</title>
+
+
+                   
+        }
+    </script>
+
+    <title>Giriş Yap</title>
 </head>
 
 <body>
     <nav>
-        <div class="nav-logo"><img  class="nav-logo-img" src="itu-logo-big.png" alt=""></div>
+        <div class="nav-logo"><img  class="nav-logo-img" src="{% static '/İTÜ_logo.png'%}" alt=""></div>
         <div class="nav-menu">
             <ul class="nav-menu-links">
-                <li><a class="nav-item" href="">Anasayfa</a></li>
-                <li><a class="nav-item" href="">İtiraf Et</a></li>
-                <li><a class="nav-item" href="">Hakkımızda</a></li>
-                <li><a class="nav-item" href="">Üye Ol</a></li>
-                <li><a class="nav-item" href="">Giriş Yap</a></li>
+                <li><a class="nav-item" href="http://127.0.0.1:8000/">Anasayfa</a></li>
+                <li><a class="nav-item" href="http://127.0.0.1:8000/confess">İtiraf Et</a></li>
+                <li><a class="nav-item" href="http://127.0.0.1:8000/about">Hakkımızda</a></li>
+                <li><a class="nav-item" href="http://127.0.0.1:8000/sign-up">Üye Ol</a></li>
+                <li><a style="color: #4191eb;" class="nav-item" href="http://127.0.0.1:8000/sign-in">Giriş Yap</a></li>
             </ul>
         </div>
     </nav>
@@ -40,16 +56,16 @@
     </div>
 
     <div class="sign-up-container">
-        <p class="sign-in-p">SIGN IN</p>
+        <p class="p-header">SIGN IN</p>
         <div class="sign-up-input">
-            <input type="email" placeholder="Email">
+            <input class="input-box" type="email" placeholder="Email" id="email">
         </div>
         <div class="sign-up-input">
-            <input type="password" placeholder="Şifre">
+            <input class="input-box" type="password" placeholder="Şifre" id="password">
         </div>
         <div class="sign-up-btns">
-            <button class="btn-conf sign-up-page">Üye Ol</button>
-            <button class="btn-conf sign-in-btn">Giriş Yap</button>
+            <button class="btn-conf btn-wide-light">Üye Ol</button>
+            <button class="btn-conf btn-wide-dark" onclick="signIn();">Giriş Yap</button>
         </div>
         
 

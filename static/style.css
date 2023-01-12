@@ -10,7 +10,6 @@ html{
     font-size: 10px;
 }
 
-
 /* Buttons */
 
 .btn-primary{
@@ -131,6 +130,147 @@ li{
 
 
 .home-confession {
+    background-color: var(--off-white);
+    color: #25292f;
+    border: 0.1rem solid #062a54;
+    border-radius: 1rem;
+    padding: 1rem;
+    height: 16rem;
+    width: 31rem;
+    position: relative;
+
+
+}
+
+.confession-title{
+    font-size: 1.6rem;
+}
+
+.confession-header {
+    display: flex;
+    border-bottom: 0.1rem solid var(--blue-1);
+}
+
+#confession-date {
+    margin-left: 16rem;
+    font-weight: lighter;
+}
+
+#confession-info {
+    font-weight: normal;
+    padding-left: 1.5rem;
+}
+
+.confession-bottom {
+    border-top: 0.1rem solid var(--blue-1) ;
+    position: relative;
+    margin-top: 5rem;
+    padding: 1rem;
+}
+
+.btn-conf{
+    width: 6rem;
+    height: 3rem;
+    border: 0.05rem solid var(--blue-1);
+    border-radius: 1rem;
+    color: var(--grey);
+    background-color: var(--white);
+    margin-right: 0.4rem;
+    transition: 0.4s;
+}
+
+.btn-conf:hover{
+    color: #4191eb;
+    border: 0.05rem solid var(--blue-2);
+}
+
+#conf-contact{
+   float: right;
+}
+
+/* Confessions Show */
+
+.confession-show{
+    background-color: var(--off-white);
+    color: var(--grey);
+    border: 0.1rem solid var(--blue-1);
+    border-radius: 1rem;
+    padding: 1rem;
+    margin: 6rem;
+    height: fit-content;
+    width: fit-content;
+    position: relative;
+    
+    
+}
+
+.comment-send{
+    border-top: 0.1rem solid var(--blue-1);
+    border-bottom: 0.1rem solid var(--blue-1);
+    position: relative;
+    padding-top: 1rem;
+    
+}
+
+.comment-send-p{
+    font-weight: bold;
+    font-family: 'Poppins', sans-serif;
+    
+}
+
+.comment-input{
+    background-color: var(--off-white);
+    color: var(--grey);
+    margin: 1rem;
+    padding: 0.5rem;
+    border: none;
+    
+}
+
+.comment-input:focus{
+    border: none;
+    outline: none;
+}
+
+.send-btn{
+    float: right;
+    margin-top: 0.5rem;
+}
+
+.comments-show{
+    margin-left: 1rem;
+}
+
+.comment{
+    display: flex;
+    position: relative;
+    padding: 1rem;
+    align-items: center;
+}
+
+#conf-contact-comment{
+    margin-left: 3rem;
+    width: 2.6rem;
+    height: 2.6rem;
+    justify-content: center;
+    align-items: center;
+}
+
+/*A confession display*/
+
+.confession-box {
+    margin-left: 5rem;
+    margin-top: 5rem;
+}
+
+.a-conf-show{
+    margin: 0;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+}
+
+.home-confession {
     font-family: 'Poppins', sans-serif;
     background-color: var(--off-white);
     color: #25292f;
@@ -141,7 +281,6 @@ li{
     width: 31rem;
     position: relative;
     margin: 5rem;
-
 }
 
 .confession-header {
@@ -192,79 +331,11 @@ li{
 
 .confession-img{
     margin: 2rem;
-    width: 18rem;
+    width: 16rem;
     height: auto;
-    }
-
-    /* Confessions Show */
-
-.confession-show{
-    background-color: var(--off-white);
-    color: var(--grey);
-    border: 0.1rem solid var(--blue-1);
-    border-radius: 1rem;
-    padding: 1rem;
-    margin: 6rem;
-    height: fit-content;
-    width: fit-content;
-    position: relative;
-    
 }
 
-.comment-send{
-    border-top: 0.1rem solid var(--blue-1);
-    border-bottom: 0.1rem solid var(--blue-1);
-    position: relative;
-    padding-top: 1rem;
-    
-}
-
-.comment-send-p{
-    font-weight: bold;
-    font-family: 'Poppins', sans-serif;
-    
-}
-
-.comment-input{
-    background-color: var(--off-white);
-    color: var(--grey);
-    margin: 1rem;
-    padding: 0.5rem;
-    border: none;
-    
-}
-
-.comment-input:focus{
-    border: none;
-    outline: none;
-}
-
-.send-btn{
-    float: right;
-    margin-top: 0.5rem;
-}
-
-.comments-show{
-    margin-left: 1rem;
-}
-
-.comment{
-    display: flex;
-    position: relative;
-    padding: 1rem;
-    align-items: center;
-}
-
-#conf-contact-comment{
-    margin-left: 3rem;
-    width: 2.4rem;
-    height: 2.4rem;
-    justify-content: center;
-    align-items: center;
-}
-
-
-    /* Sign up Page */
+/* Sign up Page */
 
 .sign-up-container{
     font-family: 'Poppins', sans-serif;
@@ -274,7 +345,7 @@ li{
     border-radius: 1rem;
     padding: 1rem;
     height: fit-content;
-    width: 150rem;
+    width: 70rem;
     position: absolute;
     margin: 5rem;
     text-align: center;
@@ -283,72 +354,113 @@ li{
     left: 50%;
 }
 
-.sign-up-p{
-    font-size: 5rem;
+/*Sign In Page*/
+
+.p-header{
+    font-size: 2.5rem;
     font-weight: normal;
 }
 
-.sign-up-input{
+.btn-wide-dark{
+    width: 40rem;
+    height: 4rem;
+    margin-bottom: 4rem;
+    font-size: 18px;
+    color: #062a54bc;
+}
+
+.btn-wide-light{
+    width: 40rem;
+    height: 4rem;
+    margin-bottom: 4rem;
+    font-size: 18px;
+    color: #062a54bc;
+    border: none;
+    background-color: var(--off-white);
+    border: 0.05rem solid #062a548f;
+}
+
+.add-pic-input{
+    display: inline-block;
+    text-align: center;
+}
+
+#label-p{
+    margin-top: 1rem;
+    
+
+}
+
+/*Contact Us*/
+
+.about-us-container{
+    font-family: 'Poppins', sans-serif;
     background-color: var(--off-white);
     color: var(--grey);
-    margin: 4rem;
-    padding-bottom: 3rem;
+    border: 0.1rem solid var(--blue-1);
+    border-radius: 1rem;
+    padding: 1rem;
+    height: fit-content;
+    width: 70rem;
+    position: absolute;
+    margin: 1rem;
+    text-align: center;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+}
+.about-us-div{
+    justify-items: center;
+    justify-content: center;
+    padding: 2rem;
     border-bottom: 1px solid #062a5479;
 }
-
-.sign-up-input input{
-    border: none;
-    display: block;
-    font-size: 2.4rem;
-    background-color: var(--off-white);
-    color: var(--grey);
+.about-us-div:last-child{
+    border-bottom: none;
 }
 
-.sign-up-input input:focus{
+.btn-div-contact{
+    float: none;
+    margin-left: -3rem;
+   
+}
+
+/*İtiraf Et*/
+
+.send-confess{
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--off-white);
+    color: var(--grey);
+    border: 0.1rem solid var(--blue-1);
+    border-radius: 1rem;
+    padding: 1rem;
+    height: fit-content;
+    width: 70rem;
+    position: absolute;
+    margin: 1rem;
+    text-align: center;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+}
+
+.input-box{
+    font-size: 2rem;
+    border: none;
+    border-bottom: 0.1rem solid #062a5462;
+    background-color: var(--off-white);
+    margin-bottom: 4rem;
+    color: var(--grey);
+    padding: 0.5rem;
+    width: 60rem;
+    
+
+}
+
+.input-box:focus{
     outline: none;
 }
 
-.sign-up-btn{
-    width: 50rem;
-    height: 5rem;
-    margin-bottom: 4rem;
-    font-size: 24px;
-    color: var(--blue-1);
-}
-
-.sign-in-page{
-    width: 50rem;
-    height: 5rem;
-    margin-bottom: 4rem;
-    font-size: 24px;
-    color: #062a54bc;
-    border: none;
-    background-color: var(--off-white);
-    border: 0.05rem solid #062a548f;
-}
-
-/*Sign In Page*/
-
-.sign-in-p{
-    font-size: 5rem;
-    font-weight: normal;
-}
-
-.sign-in-btn{
-    width: 50rem;
-    height: 5rem;
-    margin-bottom: 4rem;
-    font-size: 24px;
-    color: #062a54bc;
-}
-
-.sign-up-page{
-    width: 50rem;
-    height: 5rem;
-    margin-bottom: 4rem;
-    font-size: 24px;
-    color: #062a54bc;
-    border: none;
-    background-color: var(--off-white);
-    border: 0.05rem solid #062a548f;
+input[type="file"] {
+    display: none;
 }
