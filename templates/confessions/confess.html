@@ -43,7 +43,7 @@
             formData.append("title", title.value)
             formData.append("body", body.value)
             formData.append("author", author.value)
-            const response = await fetch("http://localhost:8000/api/confession/create", {
+            const response = await fetch("http://firatkizilboga.pythonanywhere.com/api/confession/create", {
                 method: "POST",
                 body: formData
             }).then(res => res.json()).catch(err => console.log(err))
@@ -76,11 +76,11 @@
         <div class="nav-logo"><img class="nav-logo-img" src="{% static '/İTÜ_logo.png'%}" alt=""></div>
         <div class="nav-menu">
             <ul class="nav-menu-links">
-                <li><a class="nav-item" href="http://127.0.0.1:8000/">Anasayfa</a></li>
-                <li><a style="color: #4191eb;" class="nav-item" href="http://127.0.0.1:8000/confess">İtiraf Et</a></li>
-                <li><a class="nav-item" href="http://127.0.0.1:8000/about">Hakkımızda</a></li>
-                <li><a class="nav-item" href="http://127.0.0.1:8000/sign-up">Üye Ol</a></li>
-                <li><a class="nav-item" href="http://127.0.0.1:8000/sign-in">Giriş Yap</a></li>
+                <li><a class="nav-item" href="http://http://firatkizilboga.pythonanywhere.com">Anasayfa</a></li>
+                <li><a style="color: #4191eb;" class="nav-item" href="http://firatkizilboga.pythonanywhere.com/confess">İtiraf Et</a></li>
+                <li><a class="nav-item" href="http://firatkizilboga.pythonanywhere.com/about">Hakkımızda</a></li>
+                <li><a class="nav-item" href="http://firatkizilboga.pythonanywhere.com/sign-up">Üye Ol</a></li>
+                <li><a class="nav-item" href="http://firatkizilboga.pythonanywhere.com/sign-in">Giriş Yap</a></li>
             </ul>
         </div>
     </nav>
