@@ -29,11 +29,46 @@
             formData.append("instagram", instagram);
             formData.append("password", password);
             formData.append("username", username);
-            const response = await fetch("http://firatkizilboga.pythonanywhere.com/api/user/create",{
+            let statusCode;
+            const response = await fetch("https://firatkizilboga.pythonanywhere.com/api/user/create",{
                 method: "POST",
                 body: formData
-            }).then(res => res.json()).catch(err => console.log(err))
+            }).then(res => {
+                res.json()
+                console.log(res.status);
+                statusCode = res.status;
+            }
+            )
+            .catch(err => console.log(err))
             console.log(response)
+            console.log(statusCode);
+
+            
+            
+            
+            
+            if(statusCode == 201)
+            {
+            document.getElementById("name").remove();
+            document.getElementById("surname").remove();
+            document.getElementById("email").remove();
+            document.getElementById("instagram").remove();
+            document.getElementById("password").remove();
+            document.getElementById("username").remove();
+            document.getElementById("sign-up").remove();
+            document.getElementById("title").innerHTML = "Başarıyla Üye Olundu <br> Giriş Yapmak için Tıklayınız"
+            }
+            
+           if(statusCode == 400)
+           {
+            window.alert("Hata! Bilgiler eksik olabilir veya emailiniz başkası tarafından kullanılıyor olabilir");
+            document.getElementById("email").style.color = "#cd5c5c";
+           }
+           
+           
+           
+           
+
         }
     </script>
 
@@ -45,11 +80,11 @@
         <div class="nav-logo"><img  class="nav-logo-img" src="{% static '/İTÜ_logo.png'%}" alt=""></div>
         <div class="nav-menu">
             <ul class="nav-menu-links">
-                <li><a class="nav-item" href="http://firatkizilboga.pythonanywhere.com8000/">Anasayfa</a></li>
-                <li><a class="nav-item" href="http://firatkizilboga.pythonanywhere.comconfess">İtiraf Et</a></li>
-                <li><a class="nav-item" href="http://firatkizilboga.pythonanywhere.com/about">Hakkımızda</a></li>
-                <li><a style="color: #4191eb;" class="nav-item" href="http://firatkizilboga.pythonanywhere.com/sign-up">Üye Ol</a></li>
-                <li><a class="nav-item" href="http://firatkizilboga.pythonanywhere.com/sign-in">Giriş Yap</a></li>
+                <li><a class="nav-item" href="https://firatkizilboga.pythonanywhere.com8000/">Anasayfa</a></li>
+                <li><a class="nav-item" href="https://firatkizilboga.pythonanywhere.comconfess">İtiraf Et</a></li>
+                <li><a class="nav-item" href="https://firatkizilboga.pythonanywhere.com/about">Hakkımızda</a></li>
+                <li><a style="color: #4191eb;" class="nav-item" href="https://firatkizilboga.pythonanywhere.com/sign-up">Üye Ol</a></li>
+                <li><a class="nav-item" href="https://firatkizilboga.pythonanywhere.com/sign-in">Giriş Yap</a></li>
             </ul>
         </div>
     </nav>
@@ -63,7 +98,7 @@
     </div>
 
     <div class="sign-up-container">
-        <p class="p-header">SIGN UP</p>
+        <p class="p-header" id="title">SIGN UP</p>
         <div class="sign-up-input">
             <input class="input-box" type="text" placeholder="Adınız" id="name">
         </div>
@@ -83,8 +118,8 @@
             <input class="input-box" type="text" placeholder="Kullanıcı adı"  id="username">
         </div>
         <div class="sign-up-btns">
-            <button class="btn-conf btn-wide-dark" onclick="register();">Üye Ol</button>
-            <button class="btn-conf btn-wide-light" >Giriş Yap</button>
+            <button class="btn-conf btn-wide-dark" onclick="register();" id="sign-up">Üye Ol</button>
+            <button class="btn-conf btn-wide-light" onclick="window.location.href='https://firatkizilboga.pythonanywhere.com/sign-in'">Giriş Yap</button>
         </div>
         
 

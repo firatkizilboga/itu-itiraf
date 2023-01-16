@@ -15,7 +15,7 @@
     <link href="{% static '/style.css' %}" rel="stylesheet">
     <script>
         async function signIn() {
-            let url = `http://firatkizilboga.pythonanywhere.com/api/user`;
+            let url = `https://firatkizilboga.pythonanywhere.com/api/user`;
             
             const email = document.querySelector("#email").value;
             const password = document.querySelector("#password").value;
@@ -34,11 +34,11 @@
         <div class="nav-logo"><img  class="nav-logo-img" src="{% static '/İTÜ_logo.png'%}" alt=""></div>
         <div class="nav-menu">
             <ul class="nav-menu-links">
-                <li><a class="nav-item" href="http://firatkizilboga.pythonanywhere.com">Anasayfa</a></li>
-                <li><a class="nav-item" href="http://firatkizilboga.pythonanywhere.com/confess">İtiraf Et</a></li>
-                <li><a class="nav-item" href="http://firatkizilboga.pythonanywhere.com/about">Hakkımızda</a></li>
-                <li><a class="nav-item" href="http://firatkizilboga.pythonanywhere.com/sign-up">Üye Ol</a></li>
-                <li><a style="color: #4191eb;" class="nav-item" href="http://firatkizilboga.pythonanywhere.com/sign-in">Giriş Yap</a></li>
+                <li><a class="nav-item" href="https://firatkizilboga.pythonanywhere.com">Anasayfa</a></li>
+                <li><a class="nav-item" href="https://firatkizilboga.pythonanywhere.com/confess">İtiraf Et</a></li>
+                <li><a class="nav-item" href="https://firatkizilboga.pythonanywhere.com/about">Hakkımızda</a></li>
+                <li><a class="nav-item" href="https://firatkizilboga.pythonanywhere.com/sign-up">Üye Ol</a></li>
+                <li><a style="color: #4191eb;" class="nav-item" href="https://firatkizilboga.pythonanywhere.com/sign-in">Giriş Yap</a></li>
             </ul>
         </div>
     </nav>
@@ -62,7 +62,7 @@
         <div class="sign-up-btns">
             <button class="btn-conf btn-wide-light" onclick="window.location.href='http://firatkizilboga.pythonanywhere.com/sign-up'">Üye Ol</button>
             <button class="btn-conf btn-wide-dark" onclick="signIn();">Giriş Yap</button>
-            <button>heyo</button>
+
         </div>
         
 

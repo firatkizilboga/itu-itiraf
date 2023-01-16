@@ -19,7 +19,7 @@
     {% load static %}
     <link href="{% static '/style.css' %}" rel="stylesheet"> <!-- statik dosyaları böyle çağırıyorsun-->
     <script>
-        let url = `http://firatkizilboga.pythonanywhere.com/api/confessions`;
+        let url = `https://firatkizilboga.pythonanywhere.com/api/confessions`;
 
         async function getData() {
             const response = await fetch(url); // buraya api adresini yaz
@@ -34,7 +34,7 @@
                 var confBody = data[i].body;
                 var confLikes = data[i].likes;
                 var confComments = data[i].comments;
-                var confImg = "http://firatkizilboga.pythonanywhere.com/" + data[i].image;
+                var confImg = "https://firatkizilboga.pythonanywhere.com/" + data[i].image;
 
                 console.log(confImg);
 
@@ -72,7 +72,7 @@
 
 
             //Adding img
-            if (confImg != "http://firatkizilboga.pythonanywhere.com/null") {
+            if (confImg != "https://firatkizilboga.pythonanywhere.com/null") {
                 var confImage = document.createElement("img");
                 confImage.setAttribute('src', confImg);
                 console.log(confImg);
@@ -129,11 +129,11 @@
         <div class="nav-logo"><img class="nav-logo-img" src="{% static '/İTÜ_logo.png'%}" alt=""></div>
         <div class="nav-menu">
             <ul class="nav-menu-links">
-                <li><a style="color: #4191eb;" class="nav-item" href="http://firatkizilboga.pythonanywhere.com">Anasayfa</a></li>
-                <li><a class="nav-item" href="http://firatkizilboga.pythonanywhere.com/confess">İtiraf Et</a></li>
-                <li><a class="nav-item" href="http://firatkizilboga.pythonanywhere.com/about">Hakkımızda</a></li>
-                <li><a class="nav-item" href="http://firatkizilboga.pythonanywhere.com/sign-up">Üye Ol</a></li>
-                <li><a class="nav-item" href="http://firatkizilboga.pythonanywhere.com/sign-in">Giriş Yap</a></li>
+                <li><a style="color: #4191eb;" class="nav-item" href="https://firatkizilboga.pythonanywhere.com">Anasayfa</a></li>
+                <li><a class="nav-item" href="https://firatkizilboga.pythonanywhere.com/confess">İtiraf Et</a></li>
+                <li><a class="nav-item" href="https://firatkizilboga.pythonanywhere.com/about">Hakkımızda</a></li>
+                <li><a class="nav-item" href="https://firatkizilboga.pythonanywhere.com/sign-up">Üye Ol</a></li>
+                <li><a class="nav-item" href="https://firatkizilboga.pythonanywhere.com/sign-in">Giriş Yap</a></li>
             </ul>
         </div>
     </nav>
