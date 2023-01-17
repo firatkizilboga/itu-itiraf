@@ -1,91 +1,6 @@
-{%load static%}
-<!DOCTYPE html>
-<html lang="en">
+{% extends 'confessions/base.html' %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://kit.fontawesome.com/ee4f3021a8.js" crossorigin="anonymous"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Montserrat:wght@400;700&family=Open+Sans:wght@300&family=Poppins:wght@200;400&family=Work+Sans:wght@300&display=swap"
-        rel="stylesheet">
-    <link href="{% static '/style.css' %}" rel="stylesheet"> <!-- statik dosyaları böyle çağırıyorsun-->
-
-    <script>
-        const register = async() => {
-            const name = document.querySelector("#name").value;
-            const surname = document.querySelector("#surname").value;
-            const email = document.querySelector("#email").value;
-            const instagram = document.querySelector("#instagram").value;
-            const password = document.querySelector("#password").value;
-            const username = document.querySelector("#username").value;
-            let formData = new FormData()
-            formData.append("first_name", name);
-            formData.append("last_name", surname);
-            formData.append("email", email);
-            formData.append("instagram", instagram);
-            formData.append("password", password);
-            formData.append("username", username);
-            let statusCode;
-            let data;
-            //make a request to /api/user/create and get the json response and the status statusCode
-            await fetch("https://firatkizilboga.pythonanywhere.com/api/user/create", {
-                method: "POST",
-                body: formData
-            }).then(response => {
-                statusCode = response.status;
-                return response.json();
-            }).then(json => {
-                data = json;
-            });
-            console.log(statusCode);
-            console.log(data);
-            
-            
-            if(statusCode == 201)
-            {
-            document.getElementById("name").remove();
-            document.getElementById("surname").remove();
-            document.getElementById("email").remove();
-            document.getElementById("instagram").remove();
-            document.getElementById("password").remove();
-            document.getElementById("username").remove();
-            document.getElementById("sign-up").remove();
-            document.getElementById("title").innerHTML = "Başarıyla Üye Olundu <br> Giriş Yapmak için Tıklayınız"
-            }
-            
-           if(statusCode == 400)
-           {
-            window.alert("Hata! Bilgiler eksik olabilir veya emailiniz başkası tarafından kullanılıyor olabilir");
-            document.getElementById("email").style.color = "#cd5c5c";
-           }
-           
-           
-           
-           
-
-        }
-    </script>
-
-    <title>Üye Ol</title>
-</head>
-
-<body>
-    <nav>
-        <div class="nav-logo"><img  class="nav-logo-img" src="{% static '/İTÜ_logo.png'%}" alt=""></div>
-        <div class="nav-menu">
-            <ul class="nav-menu-links">
-                <li><a class="nav-item" href="https://firatkizilboga.pythonanywhere.com">Anasayfa</a></li>
-                <li><a class="nav-item" href="https://firatkizilboga.pythonanywhere.com/confess">İtiraf Et</a></li>
-                <li><a class="nav-item" href="https://firatkizilboga.pythonanywhere.com/about">Hakkımızda</a></li>
-                <li><a style="color: #4191eb;" class="nav-item" href="https://firatkizilboga.pythonanywhere.com/sign-up">Üye Ol</a></li>
-                <li><a class="nav-item" href="https://firatkizilboga.pythonanywhere.com/sign-in">Giriş Yap</a></li>
-            </ul>
-        </div>
-    </nav>
+{% block content %}
 
     <div class="home-display">
         <ul>
@@ -122,7 +37,84 @@
         
 
     </div>
+    <script>
+        const register = async() => {
+            const name = document.querySelector("#name").value;
+            const surname = document.querySelector("#surname").value;
+            const email = document.querySelector("#email").value;
+            const instagram = document.querySelector("#instagram").value;
+            const password = document.querySelector("#password").value;
+            const username = document.querySelector("#username").value;
+            let formData = new FormData()
+            formData.append("first_name", name);
+            formData.append("last_name", surname);
+            formData.append("email", email);
+            formData.append("instagram", instagram);
+            formData.append("password", password);
+            formData.append("username", username);
+            let statusCode;
+            let data;
+            //make a request to /api/user/create and get the json response and the status statusCode
+            await fetch("https://firatkizilboga.pythonanywhere.com/api/user/create", {
+                method: "POST",
+                body: formData
+            }).then(response => {
+                statusCode = response.status;
+                return response.json();
+            }).then(json => {
+                data = json;
+            });
+            
+            if(statusCode == 201)
+            {
+            document.getElementById("name").remove();
+            document.getElementById("surname").remove();
+            document.getElementById("email").remove();
+            document.getElementById("instagram").remove();
+            document.getElementById("password").remove();
+            document.getElementById("username").remove();
+            document.getElementById("sign-up").remove();
+            document.getElementById("title").innerHTML = "Başarıyla Üye Olundu <br> Giriş Yapmak için Tıklayınız"
+            }
+            
+           if(statusCode == 400)
+           {
+            window.alert("Hata! Bilgiler eksik olabilir veya emailiniz başkası tarafından kullanılıyor olabilir");
+            if(name == "")
+            {
+                document.getElementById("name").placeholder = 'Bu alanı boş bırakmayınız';  
+            }
+            if(surname == "")
+            {
+                document.getElementById("surname").placeholder = 'Bu alanı boş bırakmayınız';  
+            }
+            if(email == "")
+            {
+                document.getElementById("email").placeholder = 'Bu alanı boş bırakmayınız';  
+            }
+            if(password == "")
+            {
+                document.getElementById("password").placeholder = 'Bu alanı boş bırakmayınız';  
+            }
+            if(username == "")
+            {
+                document.getElementById("username").placeholder = 'Bu alanı boş bırakmayınız';  
+            }
+            if(instagram == "")
+            {
+                document.getElementById("instagram").placeholder = 'Bu alanı boş bırakmayınız';  
+            }
 
-</body>
+            else
+            {
+                document.getElementById("email").value = "Daha önce kullanılmayan bir mail adresi giriniz";
+                document.getElementById("email").style.color = "#cd5c5c";
+            }
+            
+           }
+           
 
-</html>
+        }
+    </script>
+
+{% endblock content %}

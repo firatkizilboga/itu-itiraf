@@ -1,33 +1,6 @@
-{{pk}}  <!-- linkteki sayı bu. api/confession/pk sana json olarak o confession'un içeriğini gönderecek. direkt url'den de çıkartabilirsin bu çalışmazsa-->
-        <!-- Beğenme boş put request-->
-        <!-- Comment ekleme kısmında sadece author ve body göndermen lazım  post request-->
-        {%load static%}
-        <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://kit.fontawesome.com/ee4f3021a8.js" crossorigin="anonymous"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="{% static '/style.css' %}">
-    <title>Confession</title>
-</head>
-<body>
+{% extends 'confessions/base.html' %}
 
-    <nav>
-        <div class="nav-logo"><img  class="nav-logo-img" src="{% static '/İTÜ_logo.png'%}" alt=""></div>
-        <div class="nav-menu">
-            <ul class="nav-menu-links">
-                <li><a class="nav-item" href="https://firatkizilboga.pythonanywhere.com">Anasayfa</a></li>
-                <li><a class="nav-item" href="https://firatkizilboga.pythonanywhere.com/confess">İtiraf Et</a></li>
-                <li><a class="nav-item" href="https://firatkizilboga.pythonanywhere.com/about">Hakkımızda</a></li>
-                <li><a class="nav-item" href="https://firatkizilboga.pythonanywhere.com/sign-up">Üye Ol</a></li>
-                <li><a class="nav-item" href="https://firatkizilboga.pythonanywhere.com/sign-in">Giriş Yap</a></li>
-            </ul>
-        </div>
-    </nav>
+{% block content %}
 
     <div class="confession-display">
         <ul>
@@ -79,5 +52,4 @@
 
         </div>
     </div>
-</body>
-</html>
+    {% endblock content %}

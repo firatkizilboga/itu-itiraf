@@ -1,23 +1,29 @@
-<!--confession ekleme sayfası olucak
-    title body ve author göndermen lazım 
-    post requesti yapman lazım
-    pythonda requests.post(url=url , data = {"title": "title" , "body": "body" , "author": "author"})
-    şeklinde yaptım
 
-    author ve body boş olabilir
-    -->
-{%load static%}
-<html lang="en">
+{% extends 'confessions/base.html' %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://kit.fontawesome.com/ee4f3021a8.js" crossorigin="anonymous"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="{% static '/style.css' %}">
-    <title>İtiraf Et</title>
+{% block content %}
+
+
+    <div  id="send-confess-div" class="send-confess">
+        
+        <p id="header" class="p-header">İtiraf Et</p>
+        <div class="sign-up-input">
+            <input id="title" class="input-box" type="text" placeholder="Başlık">
+        </div>
+        <div class="sign-up-input">
+            <input id="body" class="input-box" type="text" placeholder="İtirafınızı buraya yazınız...">
+        </div>
+        <div class="sign-up-input">
+            <input id="author" class="input-box" type="text" placeholder="Nickiniz">
+        </div>
+        <div class="sign-up-btns">
+            <label id="img-label" class="add-pic-input btn-wide-light btn-conf" for="img">
+                <p id="label-p">Fotoğraf Ekle</p>
+            </label>
+            <input onchange="checkImg();" id="img" type="file">
+            <button id="send-btn" class="btn-conf btn-wide-dark" onclick="confess();">Gönder</button>
+        </div>
+    </div>
     <script>
         
 
@@ -84,47 +90,6 @@
 
         }
     </script>
-</head>
-
-<body>
-    
+{% endblock content %}
 
 
-    <nav>
-        <div class="nav-logo"><img class="nav-logo-img" src="{% static '/İTÜ_logo.png'%}" alt=""></div>
-        <div class="nav-menu">
-            <ul class="nav-menu-links">
-                <li><a class="nav-item" href="https://firatkizilboga.pythonanywhere.com">Anasayfa</a></li>
-                <li><a style="color: #4191eb;" class="nav-item" href="https://firatkizilboga.pythonanywhere.com/confess">İtiraf Et</a></li>
-                <li><a class="nav-item" href="https://firatkizilboga.pythonanywhere.com/about">Hakkımızda</a></li>
-                <li><a class="nav-item" href="https://firatkizilboga.pythonanywhere.com/sign-up">Üye Ol</a></li>
-                <li><a class="nav-item" href="https://firatkizilboga.pythonanywhere.com/sign-in">Giriş Yap</a></li>
-            </ul>
-        </div>
-    </nav>
-
-    <div  id="send-confess-div" class="send-confess">
-        
-        <p id="header" class="p-header">İtiraf Et</p>
-        <div class="sign-up-input">
-            <input id="title" class="input-box" type="text" placeholder="Başlık">
-        </div>
-        <div class="sign-up-input">
-            <input id="body" class="input-box" type="text" placeholder="İtirafınızı buraya yazınız...">
-        </div>
-        <div class="sign-up-input">
-            <input id="author" class="input-box" type="text" placeholder="Nickiniz">
-        </div>
-        <div class="sign-up-btns">
-            <label id="img-label" class="add-pic-input btn-wide-light btn-conf" for="img">
-                <p id="label-p">Fotoğraf Ekle</p>
-            </label>
-            <input onchange="checkImg();" id="img" type="file">
-            <button id="send-btn" class="btn-conf btn-wide-dark" onclick="confess();">Gönder</button>
-        </div>
-    </div>
-
-
-</body>
-
-</html>

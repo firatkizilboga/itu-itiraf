@@ -1,23 +1,17 @@
-{%load static%} <!-- Ekstra dosyaları getirmek için böyle yapıyorsun-->
-<!--  statik dosyaları en üst dizindeki static klasörüne atıcaksın -->
 
-<!-- direkt api/ adresine headerde start=0 ve end=10 parametreleri olacak şekilde request at kullanıcı sayfayı aşağı indirince 
-    start=10 end=20 gibisinden query atmaya devam edersin -->
+{% extends 'confessions/base.html' %}
 
-<html lang="en">
+{% block content %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://kit.fontawesome.com/ee4f3021a8.js" crossorigin="anonymous"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Montserrat:wght@400;700&family=Open+Sans:wght@300&family=Poppins:wght@200;400&family=Work+Sans:wght@300&display=swap"
-        rel="stylesheet">
-    {% load static %}
-    <link href="{% static '/style.css' %}" rel="stylesheet"> <!-- statik dosyaları böyle çağırıyorsun-->
+
+    <div class="home-display">
+        <ul>
+            <li class="conf-home"></li>
+            <li class="conf-home"></li>
+            <li class="conf-home"></li>
+        </ul>
+    </div>
+    <div id="main"></div>
     <script>
         let url = `https://firatkizilboga.pythonanywhere.com/api/confessions`;
 
@@ -119,35 +113,6 @@
         }
 
     </script>
-    <title>itü itiraf</title>
-</head>
+   
 
-<body>
-
-    <!-- Navigation Bar -->
-    <nav>
-        <div class="nav-logo"><img class="nav-logo-img" src="{% static '/İTÜ_logo.png'%}" alt=""></div>
-        <div class="nav-menu">
-            <ul class="nav-menu-links">
-                <li><a style="color: #4191eb;" class="nav-item" href="https://firatkizilboga.pythonanywhere.com">Anasayfa</a></li>
-                <li><a class="nav-item" href="https://firatkizilboga.pythonanywhere.com/confess">İtiraf Et</a></li>
-                <li><a class="nav-item" href="https://firatkizilboga.pythonanywhere.com/about">Hakkımızda</a></li>
-                <li><a class="nav-item" href="https://firatkizilboga.pythonanywhere.com/sign-up">Üye Ol</a></li>
-                <li><a class="nav-item" href="https://firatkizilboga.pythonanywhere.com/sign-in">Giriş Yap</a></li>
-            </ul>
-        </div>
-    </nav>
-
-    <div class="home-display">
-        <ul>
-            <li class="conf-home"></li>
-            <li class="conf-home"></li>
-            <li class="conf-home"></li>
-        </ul>
-    </div>
-    <div id="main"></div>
-    <script src="{% static '/script.js' %}"></script>
-
-</body>
-
-</html>
+    {% endblock content %}
