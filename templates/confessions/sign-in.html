@@ -15,14 +15,29 @@
     <link href="{% static '/style.css' %}" rel="stylesheet">
     <script>
         async function signIn() {
-            let url = `https://firatkizilboga.pythonanywhere.com/api/user`;
+            let url = `https://firatkizilboga.pythonanywhere.com/api/user/login`;
             
-            const email = document.querySelector("#email").value;
+            const username = document.querySelector("#username").value;
             const password = document.querySelector("#password").value;
             
-            const response = await fetch(url); // buraya api adresini yaz
-            const data = await response.json();
-            console.log(data); // datayla ne yapılacaksa yap
+            let formData = new FormData()
+            formData.append("password", password);
+            formData.append("username", username);
+            let statusCode;
+            let data;
+            //make a request to /api/user/create and get the json response and the status statusCode
+            await fetch(url, {
+                method: "POST",
+                body: formData
+            }).then(response => {
+                statusCode = response.status;
+                return response.json();
+            }).then(json => {
+                data = json;
+            });
+            console.log(statusCode);
+            console.log(data);
+            document.cookie = `token=${data.token}`;
         }
     </script>
 
@@ -54,7 +69,7 @@
     <div class="sign-up-container">
         <p class="p-header">SIGN IN</p>
         <div class="sign-up-input">
-            <input class="input-box" type="email" placeholder="Email" id="email">
+            <input class="input-box" type="text" placeholder="Username" id="username">
         </div>
         <div class="sign-up-input">
             <input class="input-box" type="password" placeholder="Şifre" id="password">
