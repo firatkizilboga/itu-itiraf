@@ -1,0 +1,46 @@
+{%load static%}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/ee4f3021a8.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Montserrat:wght@400;700&family=Open+Sans:wght@300&family=Poppins:wght@200;400&family=Work+Sans:wght@300&display=swap"
+        rel="stylesheet">
+    <link href="{% static '/style.css' %}" rel="stylesheet">
+    <script src = "{% static 'cookieManager.js'%}"></script>
+</head>
+<body>
+    <nav>
+        <div class="nav-logo"><img  class="nav-logo-img" src="{% static '/İTÜ_logo.png'%}" alt=""></div>
+        <div class="nav-menu">
+            <ul class="nav-menu-links">
+                <li><a class="nav-item" href="https://firatkizilboga.pythonanywhere.com">Anasayfa</a></li>
+                <li><a class="nav-item" href="https://firatkizilboga.pythonanywhere.com/confess">İtiraf Et</a></li>
+                <li><a class="nav-item" href="https://firatkizilboga.pythonanywhere.com/about">Hakkımızda</a></li>
+            </ul>
+        </div>
+        <script>
+            const token = getCookie('token');
+            if(checkCookie('token')){
+                const navMenu = document.querySelector('.nav-menu-links');
+                const profile = document.createElement('li');
+                profile.innerHTML = `<a class="nav-item" href="https://firatkizilboga.pythonanywhere.com/profile">Profil</a>`;
+                navMenu.appendChild(profile);
+            }else{
+                const navMenu = document.querySelector('.nav-menu-links');
+                const signIn = document.createElement('li');
+                signIn.innerHTML = `<a class="nav-item" href="https://firatkizilboga.pythonanywhere.com/sign-in">Giriş Yap</a>`;
+                navMenu.appendChild(signIn);
+                const signUp = document.createElement('li');
+                signUp.innerHTML = `<a class="nav-item" href="https://firatkizilboga.pythonanywhere.com/sign-up">Üye Ol</a>`;
+                navMenu.appendChild(signUp);
+            }
+        </script>
+    </nav>
+    {% block content %}{% endblock content %}
+</body>
+</html>

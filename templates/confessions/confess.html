@@ -19,6 +19,8 @@
     <link rel="stylesheet" href="{% static '/style.css' %}">
     <title>İtiraf Et</title>
     <script>
+        
+
         function checkImg(){
             if (document.getElementById("img") == null) {
                 console.log("no files selected");
@@ -31,6 +33,9 @@
         }
         const confess = async () => {
             
+            
+            
+
             const image = document.querySelector("#img");
             const title = document.querySelector("#title")
             const body = document.querySelector("#body")
@@ -45,11 +50,22 @@
             formData.append("title", title.value)
             formData.append("body", body.value)
             formData.append("author", author.value)
-            const response = await fetch("https://firatkizilboga.pythonanywhere.com/api/confession/create", {
+
+            let metadata = {};
+            //get the cookie named token
+            const token = document.cookie.split('; ').find(row => row.startsWith('token=')).split('=')[1];
+            if (token != -1) {
+                metadata = {
+                    'Authorization': 'Token ' + token,
+                }
+            }
+            console.log(metadata);
+            const response = await fetch('https://firatkizilboga.pythonanywhere.com/api/confession/create', {
+                headers: metadata,
                 method: "POST",
                 body: formData
             }).then(res => res.json()).catch(err => console.log(err))
-            console.log(response)
+            console.log(response);
             console.log("itiraf edildi");
           
            image.remove();
